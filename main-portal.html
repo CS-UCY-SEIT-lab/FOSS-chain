@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Portal</title>
+    <link rel="stylesheet" href="/ade/CSS/main-portal.css" />
+    <script type="module" src="/ade/scripts/main-portal.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  </head>
+
+  <body>
+    <header class="dashboard-header">
+      <div class="dashboard-left">
+        <h1>Main Portal</h1>
+      </div>
+      <div class="dashboard-right">
+        <p>
+          <strong>Wallet:</strong> <span id="walletAddress">Loading...</span>
+        </p>
+        <p>
+          <strong>Balance:</strong> <span id="walletBalance">Loading...</span>
+        </p>
+      </div>
+    </header>
+
+    <nav>
+      <a
+        href="#"
+        id="browseProjectsLink"
+        class="active"
+        onclick="openScreen('browseProjects')"
+        >Browse Projects</a
+      >
+      <a href="#" id="myProjectsLink" onclick="openScreen('myProjects')"
+        >My Projects</a
+      >
+    </nav>
+
+    <main>
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchBar"
+          placeholder="Search Projects..."
+          class="search-bar"
+          oninput="searchProjects(this.value)"
+        />
+        <button id="searchButton" onclick="searchButtonClick()">Enter</button>
+        <ul id="searchResults" class="search-results"></ul>
+      </div>
+
+      <div id="browseProjects" style="display: block">
+        <h2>Browse Projects</h2>
+
+        <button
+          id="createProjectBtn"
+          class="create-project-btn"
+          onclick="openCreateProjectModal()"
+        >
+          Create Project
+        </button>
+
+        <div id="projectsSection" class="projects-section"></div>
+        <div id="createProjectModal" class="modal">
+          <div class="modal-content bigger-modal">
+            <h3>Create Project</h3>
+            <form id="projectForm" enctype="multipart/form-data">
+              <label for="projectName">Project Name:</label>
+              <input
+                type="text"
+                id="projectName"
+                name="projectName"
+                placeholder="Enter project name"
+                required
+              />
+              <div id="complianceErrorModal" class="modal">
+                <div class="compliance-modal-content">
+                  <span id="complianceClose" onclick="closeComplianceModal()"
+                    >&times;</span
+                  >
+                  <h2>License Compliance Failed</h2>
+                  <p id="complianceErrorMessage"></p>
+                  <button
+                    id="complianceModalOk"
+                    onclick="closeComplianceModal()"
+                  >
+                    OK
+                  </button>
+                </div>
+              </div>
+              <label for="projectFiles">Project Files:</label>
+              <input
+                type="file"
+                id="projectFiles"
+                name="projectFiles"
+                webkitdirectory
+                directory
+                multiple
+                required
+              />
+
+              <label for="projectDescription">Project Description:</label>
+              <textarea
+                id="projectDescription"
+                name="projectDescription"
+                placeholder="Enter project description"
+                rows="5"
+                required
+              ></textarea>
+
+              <label for="parentProjectId">Parent Project ID (optional):</label>
+              <input
+                type="number"
+                id="parentProjectId"
+                name="parentProjectId"
+                placeholder="Enter parent project ID (if derived)"
+              />
+
+              <label for="licenseType">License Type:</label>
+              <select id="licenseType" name="licenseType" required>
+                <option value="">-- Select a License --</option>
+                <option value="MIT">MIT</option>
+                <option value="BSD-3-Clause">BSD-3-Clause</option>
+                <option value="Apache-2.0">Apache-2.0</option>
+                <option value="MPLv1.1">MPLv1.1</option>
+                <option value="MPLv2.0">MPLv2.0</option>
+                <option value="LGPLv2.1">LGPLv2.1</option>
+                <option value="LGPLv2.1+">LGPLv2.1+</option>
+                <option value="LGPLv3">LGPLv3</option>
+                <option value="GPLv2">GPLv2</option>
+                <option value="GPLv2+">GPLv2+</option>
+                <option value="GPLv3">GPLv3</option>
+                <option value="AGPLv3">AGPLv3</option>
+                <option value="AGPLv1+">AGPLv1+</option>
+              </select>
+
+              <button
+                type="button"
+                class="submit-btn"
+                onclick="submitProject()"
+              >
+                Submit Project
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div id="projectDetailsModal" class="modal">
+          <div class="modal-content bigger-modal">
+            <h3>Project Details</h3>
+            <div id="projectDetailsContent">
+              <h3 id="projectDetailsTitle"></h3>
+              <p id="projectDetailsDescription"></p>
+              <p id="projectDetailsId"></p>
+              <p id="projectLicense"></p>
+              <p id="projectParentId"></p>
+              <div class="download-button-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="myProjects" style="display: none">
+        <h2>My Projects</h2>
+        <div id="myProjectsSection" class="projects-section"></div>
+      </div>
+    </main>
+  </body>
+</html>
