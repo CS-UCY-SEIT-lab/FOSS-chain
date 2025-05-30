@@ -43,12 +43,16 @@ In a second terminal, deploy your contracts:
 npx hardhat run scripts/deploy.js --network localhost
 ```
 This will output:
+
 Contract address for LicenseManager
+
 Contract address for DownloadAgreement
+
 THIS IS IMPORTANT. Update main-portal.js with the new addresses of the 2 contracts.(at the top of the file)
 
 # LOG IN USING THE FOLLOWING
-username : USER and 
+username : USER
+
 password : test
 
 Start your server and visit log in page and you are good to go.
