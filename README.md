@@ -20,23 +20,29 @@ Optional:
 ```bash
 git clone https://github.com/CS-UCY-SEIT-lab/FOSS-Chain.git
 cd FOSS-Chain
+```
 
 2. Set Up the Database
-Use phpMyAdmin or MySQL CLI.
-Manually create the database (name it "ade" to work with the existing php files).
-Create these tables:
-users
-projects
-license_compatibility
+### Importing the Database
+Use the included `ade.sql` file to set up the MySQL database:
+```bash
+mysql -u root -p < ade.sql
+```
 
 3. Install Node & Hardhat Dependencies
+```bash
 npm install
+```
+
 4. Compile & Deploy Smart Contracts
 Start a local Hardhat node:
+```bash
 npx hardhat node
+```
 In a second terminal, deploy your contracts:
+```bash
 npx hardhat run scripts/deploy.js --network localhost
-
+```
 This will output:
 Contract address for LicenseManager
 Contract address for DownloadAgreement
