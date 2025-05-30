@@ -48,6 +48,7 @@ Contract address for DownloadAgreement
 THIS IS IMPORTANT. Update main-portal.js with the new addresses of the 2 contracts.(at the top of the file)
 
 # LOG IN USING THE FOLLOWING
-username : USER
+username : USER and 
 password : test
+
 Start your server and visit log in page and you are good to go.
