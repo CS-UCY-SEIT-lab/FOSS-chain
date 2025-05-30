@@ -46,4 +46,8 @@ This will output:
 Contract address for LicenseManager
 Contract address for DownloadAgreement
 THIS IS IMPORTANT. Update main-portal.js with the new addresses of the 2 contracts.(at the top of the file)
-Start your server and visit register page and you are good to go.
+
+# LOG IN USING THE FOLLOWING
+username : USER
+password : test
+Start your server and visit log in page and you are good to go.
