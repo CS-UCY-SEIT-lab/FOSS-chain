@@ -28,5 +28,17 @@ Create these tables:
 users
 projects
 license_compatibility
+
 3. Install Node & Hardhat Dependencies
 npm install
+4. Compile & Deploy Smart Contracts
+Start a local Hardhat node:
+npx hardhat node
+In a second terminal, deploy your contracts:
+npx hardhat run scripts/deploy.js --network localhost
+
+This will output:
+Contract address for LicenseManager
+Contract address for DownloadAgreement
+THIS IS IMPORTANT. Update main-portal.js with the new addresses of the 2 contracts.(at the top of the file)
+Start your server and visit register page and you are good to go.
