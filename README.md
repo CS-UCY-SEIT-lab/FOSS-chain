@@ -23,7 +23,6 @@ cd FOSS-Chain
 ```
 
 2. Set Up the Database
-### Importing the Database
 Use the included `ade.sql` file to set up the MySQL database:
 ```bash
 mysql -u root -p < ade.sql
