@@ -1,0 +1,34 @@
+Array
+(
+    [projectName] => C project
+    [projectDescription] => Hello, this is my new project!
+    [walletAddress] => 0x90091914e9c16805Bb2f0D83a36E2F32281E2d35
+    [licenseType] => LGPLv2.1
+    [parentProjectId] => 
+)
+
+Files: Array
+(
+    [projectFiles] => Array
+        (
+            [name] => project.zip
+            [full_path] => project.zip
+            [type] => application/zip
+            [tmp_name] => C:\xampp\tmp\phpC01A.tmp
+            [error] => 0
+            [size] => 787
+        )
+
+)
+
+Received Data:
+Array
+(
+    [projectName] => C project
+    [projectDescription] => Hello, this is my new project!
+    [walletAddress] => 0x90091914e9c16805Bb2f0D83a36E2F32281E2d35
+    [licenseType] => LGPLv2.1
+    [parentProjectId] => 
+)
+File moved successfully to: C:\xampp\htdocs\ade\PHP/uploads/a33db943bd59115e5aee/project.zip
+Project inserted successfully with ID: 21
