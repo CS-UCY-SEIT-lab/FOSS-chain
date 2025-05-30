@@ -1,7 +1,7 @@
 import { ethers } from "https://cdn.skypack.dev/ethers@5.7.2";
 
-const LICENSE_MANAGER_ADDRESS = "0x413d5282A61AC9fDc2b6C715DDE857908A22AEbf";
-const DOWNLOAD_AGREEMENT_ADDRESS = "0xecB86E40c9A84666F1BeeAA0001844908EB9bc79";
+const LICENSE_MANAGER_ADDRESS = "0xe2bc1aEb875C706f06581bca3cf5778bb5AE67EA";
+const DOWNLOAD_AGREEMENT_ADDRESS = "0xbF71d18B35b37e16a57d1DFB2ae3829828182e7B";
 const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545");
 const signer = provider.getSigner();
 let LICENSE_MANAGER_ABI, DOWNLOAD_AGREEMENT_ABI;

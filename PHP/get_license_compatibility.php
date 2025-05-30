@@ -13,7 +13,7 @@ if (empty($originalLicense) || empty($uploadedLicense)) {
     exit;
 }
 
-$query = "SELECT compatible_license FROM license_compatibility WHERE original_license = ?";
+$query = "SELECT compatible_license FROM license_compatibility_temp WHERE original_license = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $originalLicense);
 $stmt->execute();
