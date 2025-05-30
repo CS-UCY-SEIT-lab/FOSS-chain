@@ -19,7 +19,7 @@ Optional:
 1. Clone the Repository
 ```bash
 git clone https://github.com/CS-UCY-SEIT-lab/FOSS-Chain.git
-cd FOSS-Chain
+cd FOSS-Chain ```
 
 2. Set Up the Database
 Use phpMyAdmin or MySQL CLI.
