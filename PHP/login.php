@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['id'] = $user['id'];
         $_SESSION['wallet_address'] = $user['wallet_address'];
 
-        header("Location: /ade/HTML/main-portal.html");
+        header("Location: /FOSS-Chain/HTML/main-portal.html");
         exit();
     } else {
         echo "Your Username or Password is invalid";

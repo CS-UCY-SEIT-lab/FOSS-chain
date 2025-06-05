@@ -8,10 +8,10 @@ let LICENSE_MANAGER_ABI, DOWNLOAD_AGREEMENT_ABI;
 //to initialize our contracts
 
 async function initializeContracts() {
-  LICENSE_MANAGER_ABI = await fetch("/ade/LicenseManagerABI.json").then((res) =>
+  LICENSE_MANAGER_ABI = await fetch("/FOSS-Chain/LicenseManagerABI.json").then((res) =>
     res.json()
   );
-  DOWNLOAD_AGREEMENT_ABI = await fetch("/ade/DownloadAgreementABI.json").then(
+  DOWNLOAD_AGREEMENT_ABI = await fetch("/FOSS-Chain/DownloadAgreementABI.json").then(
     (res) => res.json()
   );
   console.log("ABI load correctly done");
@@ -32,8 +32,8 @@ loadSoftwareProjects(true);
 
 function loadSoftwareProjects(loadAll) {
   const url = loadAll
-    ? "/ade/PHP/get_all_software.php"
-    : "/ade/PHP/get_user_software.php";
+    ? "/FOSS-Chain/PHP/get_all_software.php"
+    : "/FOSS-Chain/PHP/get_user_software.php";
   //we want to fetch everything
   fetch(url)
     .then((response) => response.json())
@@ -75,7 +75,7 @@ async function displayWalletInfo() {
   const walletBalanceDisplay = document.getElementById("walletBalance");
 
   try {
-    const response = await fetch("/ade/PHP/get_wallet_info.php");
+    const response = await fetch("/FOSS-Chain/PHP/get_wallet_info.php");
     const data = await response.json();
 
     if (data.success) {
@@ -271,7 +271,7 @@ async function checkLicenseCompliance(
       };
     }
 
-    const response = await fetch("/ade/PHP/get_license_compatibility.php", {
+    const response = await fetch("/FOSS-Chain/PHP/get_license_compatibility.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -368,7 +368,7 @@ window.submitProject = async function () {
   const parentId = document.getElementById("parentProjectId").value.trim();
   if (parentId) {
     const parentDetails = await fetch(
-      `/ade/PHP/get_project_details.php?id=${parentId}`
+      `/FOSS-Chain/PHP/get_project_details.php?id=${parentId}`
     );
     const parentData = await parentDetails.json();
     if (parentData.success) {
@@ -376,7 +376,7 @@ window.submitProject = async function () {
       const uploadedLicense = licenseType;
 
       const checkResponse = await fetch(
-        "/ade/PHP/get_license_compatibility.php",
+        "/FOSS-Chain/PHP/get_license_compatibility.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -437,7 +437,7 @@ window.submitProject = async function () {
     );
 
     console.log("Sending project data to PHP");
-    const projectResponse = await fetch("/ade/PHP/add_software.php", {
+    const projectResponse = await fetch("/FOSS-Chain/PHP/add_software.php", {
       method: "POST",
       body: formData,
     });
@@ -483,7 +483,7 @@ window.openProjectDetails = async function (projectId, sourceScreenId) {
 
   try {
     const response = await fetch(
-      `/ade/PHP/get_project_details.php?id=${projectId}`
+      `/FOSS-Chain/PHP/get_project_details.php?id=${projectId}`
     );
     const data = await response.json();
 
@@ -554,7 +554,7 @@ window.openProjectDetails = async function (projectId, sourceScreenId) {
 
         console.log("License Agreement Stored on Blockchain!");
 
-        window.location.href = `/ade/PHP/download.php?id=${encodeURIComponent(
+        window.location.href = `/FOSS-Chain/PHP/download.php?id=${encodeURIComponent(
           data.project_id
         )}`;
       } catch (error) {
@@ -614,7 +614,7 @@ window.searchProjects = function (query) {
   const searchResults = document.getElementById("searchResults");
   searchResults.innerHTML = "";
 
-  fetch(`/ade/PHP/search_projects.php?q=${encodeURIComponent(query)}`)
+  fetch(`/FOSS-Chain/PHP/search_projects.php?q=${encodeURIComponent(query)}`)
     .then((response) => response.json())
     .then((projects) => {
       if (projects.length > 0) {
@@ -646,7 +646,7 @@ window.searchButtonClick = function () {
   const query = document.getElementById("searchBar").value;
   const searchResults = document.getElementById("searchResults");
 
-  fetch(`/ade/PHP/search_projects.php?q=${encodeURIComponent(query)}`)
+  fetch(`/FOSS-Chain/PHP/search_projects.php?q=${encodeURIComponent(query)}`)
     .then((response) => response.json())
     .then((projects) => {
       const projectsSection = document.getElementById("projectsSection");
