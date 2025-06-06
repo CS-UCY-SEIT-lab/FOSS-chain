@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 30, 2025 at 01:19 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Εξυπηρετητής: localhost
+-- Χρόνος δημιουργίας: 06 Ιουν 2025 στις 17:10:05
+-- Έκδοση διακομιστή: 10.4.28-MariaDB
+-- Έκδοση PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ade`
+-- Βάση δεδομένων: `fosschain`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `license_compatibility_temp`
+-- Δομή πίνακα για τον πίνακα `license_compatibility_temp`
 --
 
 CREATE TABLE `license_compatibility_temp` (
@@ -34,20 +34,20 @@ CREATE TABLE `license_compatibility_temp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `license_compatibility_temp`
+-- Άδειασμα δεδομένων του πίνακα `license_compatibility_temp`
 --
 
 INSERT INTO `license_compatibility_temp` (`id`, `original_license`, `compatible_license`) VALUES
-(1, 'Apache v2.0', 'MPLv1.1'),
-(2, 'Apache v2.0', 'MPLv2.0'),
-(3, 'Apache v2.0', 'LGPLv2.1'),
-(4, 'Apache v2.0', 'LGPLv2.1+'),
-(5, 'Apache v2.0', 'LGPLv3 or LGPLv3+'),
-(6, 'Apache v2.0', 'GPLv2'),
-(7, 'Apache v2.0', 'GPLv2+'),
-(8, 'Apache v2.0', 'GPLv3 or GPLv3+'),
-(9, 'Apache v2.0', 'AGPLv3'),
-(10, 'Apache v2.0', 'AGPLv1+'),
+(1, 'BSD-3-Clause', 'Apache-2.0'),
+(2, 'Apache-2.0', 'MPLv2.0'),
+(3, 'Apache-2.0', 'LGPLv2.1'),
+(4, 'Apache-2.0', 'LGPLv2.1+'),
+(5, 'Apache-2.0', 'LGPLv3 or LGPLv3+'),
+(6, 'BSD-2-Clause', 'BSD-3-Clause'),
+(7, 'Apache-2.0', 'GPLv2+'),
+(8, 'Apache-2.0', 'GPLv3 or GPLv3+'),
+(9, 'Apache-2.0', 'AGPLv3'),
+(10, 'Apache-2.0', 'AGPLv1+'),
 (11, 'MPLv1.1', 'MPLv2.0'),
 (12, 'MPLv1.1', 'LGPLv2.1'),
 (13, 'MPLv1.1', 'LGPLv2.1+'),
@@ -89,15 +89,31 @@ INSERT INTO `license_compatibility_temp` (`id`, `original_license`, `compatible_
 (49, 'GPLv2', 'AGPLv1+'),
 (50, 'GPLv2+', 'GPLv3 or GPLv3+'),
 (51, 'GPLv2+', 'AGPLv3'),
-(52, 'GPLv2+', 'AGPLv1+'),
+(52, 'GPLv2+', 'GPLv2'),
 (53, 'GPLv3 or GPLv3+', 'AGPLv3'),
 (54, 'GPLv3 or GPLv3+', 'AGPLv1+'),
-(55, 'AGPLv3', 'AGPLv1+');
+(55, 'AGPLv1+', 'AGPLv3'),
+(56, 'BSD-3-Clause', 'MPLv2.0'),
+(57, 'BSD-3-Clause', 'LGPLv2.1'),
+(58, 'BSD-3-Clause', 'LGPLv2.1+'),
+(59, 'BSD-3-Clause', 'LGPLv3 or LGPLv3+'),
+(60, 'BSD-3-Clause', 'GPLv2'),
+(61, 'BSD-3-Clause', 'GPLv2+'),
+(62, 'BSD-3-Clause', 'GPLv3 or GPLv3+'),
+(63, 'BSD-3-Clause', 'AGPLv3'),
+(64, 'BSD-2-Clause', 'MPLv2.0'),
+(65, 'BSD-2-Clause', 'LGPLv2.1'),
+(66, 'BSD-2-Clause', 'LGPLv2.1+'),
+(67, 'BSD-2-Clause', 'LGPLv3 or LGPLv3+'),
+(68, 'BSD-2-Clause', 'GPLv2'),
+(69, 'BSD-2-Clause', 'GPLv2+'),
+(70, 'BSD-2-Clause', 'GPLv3 or GPLv3+'),
+(72, 'BSD-2-Clause', 'AGPLv3');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `projects`
+-- Δομή πίνακα για τον πίνακα `projects`
 --
 
 CREATE TABLE `projects` (
@@ -115,7 +131,7 @@ CREATE TABLE `projects` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Δομή πίνακα για τον πίνακα `users`
 --
 
 CREATE TABLE `users` (
@@ -127,63 +143,63 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Άδειασμα δεδομένων του πίνακα `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `wallet_address`, `private_key`) VALUES
 (2, 'USER', 'test', '0x9ac0Dab2CcE3d14f79Bd5162809A617269747964', '0xa2aab1f33691c26de658f3becff1e930a395a2abf62d4ff7c753c5c87f2ea6a4');
 
 --
--- Indexes for dumped tables
+-- Ευρετήρια για άχρηστους πίνακες
 --
 
 --
--- Indexes for table `license_compatibility_temp`
+-- Ευρετήρια για πίνακα `license_compatibility_temp`
 --
 ALTER TABLE `license_compatibility_temp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `projects`
+-- Ευρετήρια για πίνακα `projects`
 --
 ALTER TABLE `projects`
   ADD PRIMARY KEY (`project_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `users`
+-- Ευρετήρια για πίνακα `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT για άχρηστους πίνακες
 --
 
 --
--- AUTO_INCREMENT for table `license_compatibility_temp`
+-- AUTO_INCREMENT για πίνακα `license_compatibility_temp`
 --
 ALTER TABLE `license_compatibility_temp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
--- AUTO_INCREMENT for table `projects`
+-- AUTO_INCREMENT για πίνακα `projects`
 --
 ALTER TABLE `projects`
   MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT για πίνακα `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Constraints for dumped tables
+-- Περιορισμοί για άχρηστους πίνακες
 --
 
 --
--- Constraints for table `projects`
+-- Περιορισμοί για πίνακα `projects`
 --
 ALTER TABLE `projects`
   ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
