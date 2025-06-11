@@ -50,9 +50,19 @@ Contract address for DownloadAgreement
 
 THIS IS IMPORTANT. Update main-portal.js with the new addresses of the 2 contracts.(at the top of the file)
 
-# LOG IN USING THE FOLLOWING
+# LOG IN USING THE FOLLOWING (demo user in the database)
 username : USER
 
 password : test
 
 Start your server and visit log in page and you are good to go.
+
+# Video
+
+A demonstration video of FOSS-chain is available on YouTube: 
+https://www.youtube.com/watch?v=mcb1ZCnysN8
+
+# Evaluation
+
+YOu can help us improve FOSS-chain by replying to the questionnaire available here: 
+https://docs.google.com/forms/d/e/1FAIpQLSezVHHXbJLucDyG45biimWAv_sH-WWZTl1Nlgr8FapXQGzQDg/viewform?usp=dialog
