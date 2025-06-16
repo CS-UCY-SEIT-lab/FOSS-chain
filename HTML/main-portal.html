@@ -166,6 +166,35 @@
         <h2>My Projects</h2>
         <div id="myProjectsSection" class="projects-section"></div>
       </div>
+<p>
+          <button
+                type="button"
+                class="submit-btn"
+                onclick="logout()"
+          >
+                Logout
+           </button>
+      </p>
+
     </main>
+
+    <script>
+  async function logout() {
+    try {
+      const response = await fetch('/FOSS-Chain/PHP/logout.php', {
+        method: 'POST', 
+        credentials: 'include' 
+      });
+
+      if (response.ok) {
+        window.location.href = "/FOSS-Chain/HTML/log-in.html"; 
+      } else {
+        alert("Logout failed");
+      }
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  }
+</script>
   </body>
 </html>
