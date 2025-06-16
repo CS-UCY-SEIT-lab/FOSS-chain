@@ -367,35 +367,39 @@ window.submitProject = async function () {
   const walletAddress = document.getElementById("walletAddress").textContent;
   const parentId = document.getElementById("parentProjectId").value.trim();
   if (parentId) {
-    const parentDetails = await fetch(
-      `/FOSS-Chain/PHP/get_project_details.php?id=${parentId}`
-    );
-    const parentData = await parentDetails.json();
-    if (parentData.success) {
-      const originalLicense = parentData.license_type;
-      const uploadedLicense = licenseType;
+    const parentIdArray = parentId.split(","); 
+    for (const parentItem of parentIdArray) {
+      const parentDetails = await fetch(`/FOSS-Chain/PHP/get_project_details.php?id=${parentItem.trim()}`);
+      const parentData = await parentDetails.json(); // if your PHP returns JSON
+      console.log(parentData); 
 
-      const checkResponse = await fetch(
-        "/FOSS-Chain/PHP/get_license_compatibility.php",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ originalLicense, uploadedLicense }),
+      if (parentData.success) {
+        const originalLicense = parentData.license_type;
+        const uploadedLicense = licenseType;
+
+        const checkResponse = await fetch(
+          "/FOSS-Chain/PHP/get_license_compatibility.php",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ originalLicense, uploadedLicense }),
+          }
+        );
+        const result = await checkResponse.json();
+
+        const compatibleLicenses = result.compatibleLicenses || [];
+        // if this is not the same license as the original and is not among the compatible licenses
+        if (uploadedLicense!=originalLicense && !compatibleLicenses.includes(uploadedLicense)) {
+          const errorMessage = `This project is marked as derived from Project ID:
+          ${parentId} (License: ${originalLicense}), but your selected license (${uploadedLicense}) is not compatible.
+          Allowed Licenses: ${compatibleLicenses.join(", ")}`;
+          showComplianceModal(errorMessage);
+          return;
         }
-      );
-      const result = await checkResponse.json();
-
-      const compatibleLicenses = result.compatibleLicenses || [];
-      if (!compatibleLicenses.includes(uploadedLicense)) {
-        const errorMessage = `This project is marked as derived from Project ID:
-        ${parentId} (License: ${originalLicense}), but your selected license (${uploadedLicense}) is not compatible.
-        Allowed Licenses: ${compatibleLicenses.join(", ")}`;
-        showComplianceModal(errorMessage);
+      } else {
+        alert("Failed to fetch parent project license.");
         return;
       }
-    } else {
-      alert("Failed to fetch parent project license.");
-      return;
     }
   }
 
