@@ -66,3 +66,9 @@ https://www.youtube.com/watch?v=mcb1ZCnysN8
 
 YOu can help us improve FOSS-chain by replying to the questionnaire available here: 
 https://docs.google.com/forms/d/e/1FAIpQLSezVHHXbJLucDyG45biimWAv_sH-WWZTl1Nlgr8FapXQGzQDg/viewform?usp=dialog
+
+# Citing this work
+
+In order to cite this work, please use the following citation: 
+K. Iacovou, G.M. Kapitsaki, E. Vanezi, "FOSS-chain: using blockchain for Open Source Software license compliance",
+accepted at the 26th International Conference on Product-Focused Software Process Improvement (PROFES 25), Salerno, Italy, 2025.
